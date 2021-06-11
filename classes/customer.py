@@ -38,6 +38,16 @@ class Customer():
             return
         return(new_movie_list)
 
+    def retrieve_customer_info(self,high_cust_id):
+        first_name = input(f'\nEnter first name:\t')
+        last_name = input(f'\nEnter last name:\t')
+        self.customers.append({
+            'id': high_cust_id + 1,
+            'first_name' : first_name,
+            'last_name' : last_name,
+            'current_video_rentals' : ''
+        })
+
         
 
     

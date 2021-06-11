@@ -21,7 +21,6 @@ class Inventory():
     def rent_video_to_customer(self):
         customer_id = input(f'\nEnter customer id:\t')
         video_title = input(f'Enter video title:\t')
-        customer_flag = False
         video = Video.check_video_in_inventory(self,video_title)
         customer = Customer.rent_match_customer(self,customer_id)
         if video == None or customer == None: 
@@ -48,14 +47,7 @@ class Inventory():
         Inventory.save('customers',['id','first_name','last_name','current_video_rentals'],self.customers)      
 
     def add_customer(self, high_cust_id):
-        first_name = input(f'\nEnter first name:\t')
-        last_name = input(f'\nEnter last name:\t')
-        self.customers.append({
-            'id': high_cust_id + 1,
-            'first_name' : first_name,
-            'last_name' : last_name,
-            'current_video_rentals' : ''
-        })
+        Customer.retrieve_customer_info(self,high_cust_id)
         Inventory.save('customers',['id','first_name','last_name','current_video_rentals'],self.customers)
 
     @classmethod
